@@ -6,5 +6,5 @@ protoc.main((
     '--python_out=.',
     '--grpc_python_out=.',
     '--pyi_out=.',
-    'protos/inference.proto',
+    'proto/inference.proto',
 ))
