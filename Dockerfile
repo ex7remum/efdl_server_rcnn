@@ -8,7 +8,7 @@ WORKDIR /app
 
 
 COPY protos/* /app/protos
-COPY labels.json maskrcnn_resnet50_fpn.ptt /app/
+COPY labels.json maskrcnn_resnet50_fpn.pt /app/
 COPY *.py /app/
 
 RUN python3 run_codegen.py
