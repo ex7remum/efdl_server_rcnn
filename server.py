@@ -19,8 +19,8 @@ metrics = PrometheusMetrics(app)
 @app.route("/predict", methods=['POST'])
 @metrics.counter("app_http_inference_count", "number of invocations")
 def predict():
-    model = torchvision.models.detection.maskrcnn_resnet50_fpn()
-    model.load_state_dict(torch.load('maskrcnn_resnet50_fpn.pt'))
+    model = torchvision.models.detection.maskrcnn_resnet50_fpn(pretrained=True)
+    # model.load_state_dict(torch.load('maskrcnn_resnet50_fpn.pt'))
     model.eval()
     with open('labels.json', 'r') as f:
         labels_raw = json.loads(f.read())
