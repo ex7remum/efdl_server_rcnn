@@ -6,8 +6,13 @@ RUN pip3 install -r requirements.txt
 RUN mkdir /app
 WORKDIR /app
 
-COPY labels.json .
-COPY server.py .
-COPY maskrcnn_resnet50_fpn.pt .
 
-ENTRYPOINT ["python3", "server.py"]
+COPY protos/* /app/protos
+COPY labels.json maskrcnn_resnet50_fpn.ptt /app/
+COPY *.py /app/
+
+RUN python3 run_codegen.py
+
+COPY supervisord.conf /etc/supervisord.conf
+
+ENTRYPOINT ["supervisord", "-c", "/etc/supervisord.conf"]
