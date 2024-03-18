@@ -7,7 +7,7 @@ RUN mkdir /app
 WORKDIR /app
 
 
-COPY protos/* /app/protos
+COPY proto/* /app/proto
 COPY labels.json maskrcnn_resnet50_fpn.pt /app/
 COPY *.py /app/
 
